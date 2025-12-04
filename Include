@@ -1,1 +1,17 @@
+#include <stdio.h>     // Input/output functions (printf, scanf, fgets)
+#include <time.h>      // System time functions (time, localtime, struct tm)
+#include <string.h>    // String handling (strlen, strcspn, snprintf, sprintf)
+#include <ctype.h>     // Character handling (tolower, isalpha, etc.)
 
+// Platform-specific libraries
+#ifdef _WIN32
+    #include <windows.h>   // Windows-specific functions (Sleep, Beep)
+    #define CLEAR() system("cls")
+    #define PAUSE_1S() Sleep(1000)
+    #define BEEP() Beep(1000, 300)
+#else
+    #include <unistd.h>    // Unix/Linux-specific functions (sleep)
+    #define CLEAR() system("clear")
+    #define PAUSE_1S() sleep(1)
+    #define BEEP() printf("\a")
+#endif
